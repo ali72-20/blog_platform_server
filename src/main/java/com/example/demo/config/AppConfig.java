@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
     @Bean
     public BlogServices blogServices(BlogRepository blogRepository) {
-        return new ScienceBlogServices(new BlogServicesImpl());
+        return new ScienceBlogServices(new BlogServicesImpl(blogRepository));
     }
 }

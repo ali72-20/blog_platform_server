@@ -12,6 +12,11 @@ public class BlogServicesImpl implements BlogServices{
 
     @Autowired
     private BlogRepository blogRepository;
+
+    public BlogServicesImpl(BlogRepository blogRepository) {
+        this.blogRepository = blogRepository;
+    }
+
     @Override
     public Blog createBlog(Blog blog) {
         blog.setCreatedAt(LocalDateTime.now());
