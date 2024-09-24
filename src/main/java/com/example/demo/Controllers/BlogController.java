@@ -8,9 +8,11 @@ import com.example.demo.Repo.UserRepository;
 import com.example.demo.Services.BlogServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -32,6 +34,12 @@ public class BlogController {
        response.put("timeAndDate", newBlog.getCreatedAt().toString());
        response.put("userId", newBlog.getAuthor().getUserId().toString());
        return response;
+    }
+
+    @GetMapping("/getBlogs")
+    public ResponseEntity<List<Blog>> getBlogs(){
+        List<Blog> blogs = blogServices.getAllBlogs();
+        return ResponseEntity.ok(blogs);
     }
 
 }
