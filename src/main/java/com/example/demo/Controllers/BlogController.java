@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Entity.Blog;
 import com.example.demo.Entity.User;
+import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.Repo.BlogRepository;
 import com.example.demo.Repo.UserRepository;
 import com.example.demo.Services.BlogServices;
@@ -22,8 +23,8 @@ public class BlogController {
     @PostMapping ("/addBlog")
     public Map<String,String> addBlog(@RequestBody Blog blog){
 
-        User author = userRepository.findById(blog.getAuthor().getId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        User author = userRepository.findById(blog.getAuthor().getUserId())
+                .orElseThrow(() -> new UserNotFoundException("User with ID " + blog.getAuthor().getUserId() + " not found"));
         blog.setAuthor(author);
         HashMap<String, String> response = new HashMap<>();
        Blog newBlog =  blogServices.createBlog(blog);
