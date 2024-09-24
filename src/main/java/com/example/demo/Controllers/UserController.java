@@ -26,4 +26,13 @@ public class UserController {
         return response;
     }
 
+    @PostMapping("/login")
+    public Map<String,String> login(@RequestBody LoginRequest loginRequest){
+        User newUser = userServices.login(loginRequest.getUsername(),loginRequest.getPassword());
+        HashMap<String, String> response = new HashMap<>();
+        response.put("id", newUser.getUserId().toString());
+        response.put("username", newUser.getUsername());
+        return response;
+    }
+
 }
