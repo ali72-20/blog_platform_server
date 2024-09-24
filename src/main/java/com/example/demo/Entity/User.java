@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    private Long userId;
     private String username;
     private String mail;
     private String password;
@@ -27,5 +27,13 @@ public class User {
 
     public String getMail() {
         return mail;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
