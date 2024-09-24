@@ -37,6 +37,7 @@ public class BlogServicesImpl implements BlogServices{
     public Blog updateBlog(Long id, Blog blog) {
         if(blogRepository.existsById(id)){
             blog.setId(id);
+            blog.setCreatedAt(LocalDateTime.now());
            return blogRepository.save(blog);
         }else{
             throw new RuntimeException("Task not found");

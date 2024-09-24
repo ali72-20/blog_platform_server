@@ -6,9 +6,11 @@ import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.Repo.BlogRepository;
 import com.example.demo.Repo.UserRepository;
 import com.example.demo.Services.BlogServices;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -48,5 +50,9 @@ public class BlogController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Blog> update(@PathVariable Long id, @RequestBody Blog blog){
+        Blog updatedBlog = blogServices.updateBlog(id,blog);
+        return ResponseEntity.ok(updatedBlog);
+    }
 }
