@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface BlogServices {
     Blog createBlog(Blog blog);
-    Blog getBlog(int id);
-    Blog deleteBlog(int id);
-    Blog updateBlog(int id);
+    Blog getBlog(Long id);
+    String deleteBlog(Long id);
+    Blog updateBlog(Long id, Blog blog);
     List<Blog> getAllBlogs();
 }
