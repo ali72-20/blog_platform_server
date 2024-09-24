@@ -24,4 +24,16 @@ public class Blog {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 }
