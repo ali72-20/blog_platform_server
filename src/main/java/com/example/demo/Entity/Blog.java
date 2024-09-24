@@ -17,6 +17,10 @@ public class Blog {
     @ManyToOne
     private User author;
 
+    public void setAuthor(User author){
+        this.author = author;
+    }
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
