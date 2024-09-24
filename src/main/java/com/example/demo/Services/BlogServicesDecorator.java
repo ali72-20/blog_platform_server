@@ -7,6 +7,10 @@ import java.util.List;
 public abstract class BlogServicesDecorator implements BlogServices{
     protected BlogServices blogServices;
 
+    public BlogServicesDecorator(BlogServices blogServices) {
+        this.blogServices = blogServices;
+    }
+
     @Override
     public Blog createBlog(Blog blog) {
         return blogServices.createBlog(blog);

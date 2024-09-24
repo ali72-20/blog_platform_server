@@ -13,6 +13,7 @@ public class Blog {
     private String title;
     private String content;
     private LocalDateTime createdAt;
+    private String category;
 
     @ManyToOne
     private User author;
@@ -55,5 +56,13 @@ public class Blog {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
