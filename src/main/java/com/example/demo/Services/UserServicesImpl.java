@@ -1,6 +1,7 @@
 package com.example.demo.Services;
 
 import com.example.demo.Entity.User;
+import com.example.demo.Exception.UsernameAlreadyTakenException;
 import com.example.demo.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -25,7 +26,7 @@ public class UserServicesImpl implements UserServices{
     public User register(User user) {
        User chackUser = userRepository.findByUsername(user.getUsername());
        if(chackUser != null){
-           throw new RuntimeException("This username has taken before");
+           throw new UsernameAlreadyTakenException("Choose another username");
        }
        chackUser = userRepository.findUserByMail(user.getMail());
        if(chackUser != null){
