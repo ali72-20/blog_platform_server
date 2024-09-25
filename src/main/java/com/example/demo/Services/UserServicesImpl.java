@@ -1,6 +1,7 @@
 package com.example.demo.Services;
 
 import com.example.demo.Entity.User;
+import com.example.demo.Exception.MailAlreadyTakenException;
 import com.example.demo.Exception.UsernameAlreadyTakenException;
 import com.example.demo.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class UserServicesImpl implements UserServices{
        }
        chackUser = userRepository.findUserByMail(user.getMail());
        if(chackUser != null){
-           throw new RuntimeException("This mail has used before");
+           throw new MailAlreadyTakenException("Choose another mail");
        }
        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
        return userRepository.save(user);
